@@ -5,10 +5,10 @@ module.exports = {
     plugins: [
       new CopyWebpackPlugin([
         {
-          from: './src/assets/graph',
-          to: './graph/',
+          from: './src/assets/data',
+          to: './data/',
           toType: 'dir',
-          ignore: [ "index.html", ".DS_Store" ]
+          ignore: ['index.html', '.DS_Store']
         }
       ])
     ]
@@ -17,10 +17,10 @@ module.exports = {
     loaderOptions: {
       sass: {
         data: `
-                    @import "@/assets/styles/_variables.scss";
-                    @import "@/assets/styles/_mixins.scss";
-                    @import "@/assets/styles/_functions.scss";
-                `
+                @import "@/assets/styles/_variables.scss";
+                @import "@/assets/styles/_mixins.scss";
+                @import "@/assets/styles/_functions.scss";
+              `
       }
     }
   }
