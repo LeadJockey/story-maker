@@ -1,23 +1,49 @@
 <template>
   <div id="app">
+    <progress-bar></progress-bar>
     <h1>app</h1>
     <router-view></router-view>
     <hr />
-    <button @click="click1('key1')">call api 1</button>
+    <button @click.prevent="call">call api no wait</button>
+    <hr />
+    <button @click.prevent="callThrottle">call api throttle</button>
+    <hr />
+    <button @click.prevent="callDebounce">call api debounce</button>
     <hr />
   </div>
 </template>
 
 <script>
 import '@/assets/styles/reset.css'
-import { _ } from 'vue-underscore'
-import { getTestData } from '@/api/v1/mockey'
+import { test, testThrottle, testDebounce } from '@/api/v1/mockey'
+import ProgressBar from '@/components/global/ProgressBar'
+
+const MyAppConstants = () => {
+  const pvt = {
+    userIDKey: 'my-app-user-id',
+    maxIterations: 20
+  }
+  return {
+    get: name => pvt[name]
+  }
+}
+const a = MyAppConstants()
 
 export default {
-  name: 'App',
+  name: 'app',
+  components: {
+    ProgressBar
+  },
   methods: {
     // click1: getTestData(() => console.log('s'), () => console.log('f'))
-    click1: getTestData()
+    call: () => test(),
+    callThrottle: testThrottle(),
+    callDebounce: testDebounce(),
+    created: function() {
+      console.log(`a.get('userIDKey')`, a.get('userIDKey'))
+      
+      a.get('userIDKey')
+    }
   }
 }
 </script>
@@ -29,6 +55,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
