@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <progress-bar></progress-bar>
+    <loading-bar></loading-bar>
     <h1>app</h1>
     <router-view></router-view>
     <hr />
@@ -10,13 +10,16 @@
     <hr />
     <button @click.prevent="callDebounce">call api debounce</button>
     <hr />
+    <!-- <Test></Test> -->
   </div>
 </template>
 
 <script>
 import '@/assets/styles/reset.css'
 import { test, testThrottle, testDebounce } from '@/api/v1/mockey'
-import ProgressBar from '@/components/global/ProgressBar'
+import LoadingBar from '@/components/global/LoadingBar'
+import Test from '@/pages/Test'
+
 
 const MyAppConstants = () => {
   const pvt = {
@@ -32,7 +35,8 @@ const a = MyAppConstants()
 export default {
   name: 'app',
   components: {
-    ProgressBar
+    LoadingBar,
+    Test
   },
   methods: {
     // click1: getTestData(() => console.log('s'), () => console.log('f'))
