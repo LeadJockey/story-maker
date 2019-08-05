@@ -1,52 +1,48 @@
 <template>
-  <div v-if="isLoading" class="comp_progress_bar">
-    <div  class="bar"></div>
+  <div class="comp_progress_bar">
+    <div :class="{circle:true, on:isLoading }"></div>
+    <span class="percent">{{percent}}%</span>
   </div>
 </template>
 
 <script>
 import { createNamespacedHelpers } from 'vuex'
-
 const { mapGetters } = createNamespacedHelpers('loading')
 
 export default {
-  name: 'comp-progress-bar',
+  name: 'comp-global-loading-bar',
   computed: {
-    ...mapGetters(['isLoading', 'precent'])
+    ...mapGetters(['isLoading', 'percent'])
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .comp_progress_bar {
-  .bar {
-    height: 4px;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  box-sizing: border-box;
+  .circle {
     width: 100%;
-    position: fixed;
-    overflow: hidden;
-    background-color: $color_divide;
-  }
-  .bar:before {
-    position: absolute;
     height: 100%;
-    width: 100%;
-    background-color: #2980b9;
-    transition:all .9s cubic-bezier(0, .21, .03, 1.01) 0s;
-    transform: translate(-100%, 0);
-    animation: loading 1.8s ease-in-out infinite;
-    content: '';
+    border: 2px dashed red;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: all .3s ease;
   }
-}
-
-@keyframes loading {
-  from {
-    transform: translate(-100%, 0);
+  .on {
+    transform: rotate(360deg);
   }
-  50% {
-    transform: translate(0, 0);
-  }
-  to {
-    transform: translate(-100%, 0);
+  .percent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    margin: 0 auto;
+    font-size: 10px;
+    line-height: 50px;
   }
 }
 </style>

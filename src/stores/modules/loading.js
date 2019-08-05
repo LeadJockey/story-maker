@@ -1,22 +1,24 @@
 const state = {
-  tick: 100,
-  precent: 0,
+  percent: 0,
   isLoading: false
 }
 
 const mutations = {
   startLoading(state) {
-    state.precent += state.tick
+    state.percent = 0
     state.isLoading = true
   },
   finishLoading(state) {
-    state.precent -= state.tick
+    state.percent = 100
     state.isLoading = false
+  },
+  setPercent(state, percent) {
+    state.percent = percent
   }
 }
 
 const getters = {
-  precent: state => state.precent,
+  percent: state => state.percent,
   isLoading: state => state.isLoading
 }
 

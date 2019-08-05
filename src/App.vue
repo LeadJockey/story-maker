@@ -10,7 +10,6 @@
     <hr />
     <button @click.prevent="callDebounce">call api debounce</button>
     <hr />
-    <!-- <Test></Test> -->
   </div>
 </template>
 
@@ -18,36 +17,16 @@
 import '@/assets/styles/reset.css'
 import { test, testThrottle, testDebounce } from '@/api/v1/mockey'
 import LoadingBar from '@/components/global/LoadingBar'
-import Test from '@/pages/Test'
-
-
-const MyAppConstants = () => {
-  const pvt = {
-    userIDKey: 'my-app-user-id',
-    maxIterations: 20
-  }
-  return {
-    get: name => pvt[name]
-  }
-}
-const a = MyAppConstants()
 
 export default {
   name: 'app',
   components: {
-    LoadingBar,
-    Test
+    LoadingBar
   },
   methods: {
-    // click1: getTestData(() => console.log('s'), () => console.log('f'))
     call: () => test(),
     callThrottle: testThrottle(),
     callDebounce: testDebounce(),
-    created: function() {
-      console.log(`a.get('userIDKey')`, a.get('userIDKey'))
-      
-      a.get('userIDKey')
-    }
   }
 }
 </script>

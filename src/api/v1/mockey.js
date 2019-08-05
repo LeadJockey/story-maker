@@ -5,6 +5,8 @@ export const test = () =>
     method: 'get',
     url: '/v2/5d355b302e0000df4ea6b96c'
   })
+  
+  
 
 export const testThrottle = (resolve, reject) =>
   _createThrottleRequest(
