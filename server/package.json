@@ -6,8 +6,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -20,7 +20,7 @@
   },
   "license": "ISC",
   "prettier": {
-    "printWidth": 150,
+    "printWidth": 80,
     "tabWidth": 2,
     "bracketSpacing": true,
     "singleQuote": true,

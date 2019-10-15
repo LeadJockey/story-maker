@@ -1,9 +1,26 @@
-const CUSTOM_EVENT = require('./customEvent')
-const ERROR_MESSAGE = require('./errorMessage')
-const CONFIG = require('./config')
+const env = process.env
+
+const request = {
+  baseURL:
+    env.NODE_ENV === 'production'
+      ? 'http://172.27.114.65:3002/api/v1/singers'
+      : 'http://172.27.114.65:3002/api/v1/singers',
+  timeout: 3000,
+  headers: {},
+  withCredentials: true
+}
+
+const server = {
+  port: env.PORT || 3000
+}
+
+const customEvent = {}
+
+const message = {}
 
 module.exports = {
-  CUSTOM_EVENT,
-  ERROR_MESSAGE,
-  CONFIG
+  request,
+  server,
+  customEvent,
+  message
 }
